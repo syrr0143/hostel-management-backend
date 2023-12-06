@@ -1,0 +1,15 @@
+ done
+
+ - admin signup
+ - login admin success
+ -user sign up
+ -user login success 
+ -get al user successful
+-complaint post
+-complaint read by concerned hostel admin
+-post notice by the admin
+-notice read by respective hostel users
+
+ -remaining
+ 
+
