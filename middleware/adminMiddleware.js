@@ -2,7 +2,7 @@
 
 const jwt = require('jsonwebtoken');
 const Admin = require('../model/admin');
-
+require('dotenv').config();
 const adminMiddleware = async (req, res, next) => {
     // get token from the request header
     const token = req.header('Authorization');
@@ -11,7 +11,7 @@ const adminMiddleware = async (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, 'hostel management service is tokenised ');
+        const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
         const admin = await Admin.findById(decoded.adminId);
 
         if (!admin) {

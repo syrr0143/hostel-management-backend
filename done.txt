@@ -9,7 +9,15 @@
 -complaint read by concerned hostel admin
 -post notice by the admin
 -notice read by respective hostel users
+-hostel detals posted and getted succesdsfully
+-deleted succesdsfully
+
+-- getting the profile of user and the admin correctly
+
 
  -remaining
  
+-payment page 
+-forgot password
+-otp send
 

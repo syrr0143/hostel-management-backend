@@ -6,7 +6,7 @@ const Admin = require('../model/admin')
 const adminMiddleware =require('../middleware/adminMiddleware')
 const userMiddleware =require('../middleware/userMiddleware') 
 const router = express.Router();
-
+require('dotenv').config();
 // signup router for the admin  is /signup
 router.post ('/AdminSignup',async(req,res)=>{
     try {
@@ -57,7 +57,7 @@ router.post('/AdminLogin',async (req,res)=>{
             return res.status(401).json({ error: 'Invalid credentials' });
         }
         // generate a jwt token 
-        const token = jwt.sign({adminId:admin._id},'hostel management service is tokenised ',{expiresIn:'7d'});
+        const token = jwt.sign({adminId:admin._id},process.env.TOKEN_SECRET,{expiresIn:'7d'});
 
         // set the token as an cookie 
          res.cookie('token',token,{httpOnly:true,maxage:604800000});
@@ -71,7 +71,7 @@ router.post('/AdminLogin',async (req,res)=>{
 });
 
 
-// signup router for the user   is /signup
+// signup or add new user  router for the user   is /signup
 router.post ('/UserSignup',async(req,res)=>{
     try {
         console.log("request received for signup :", req.body);
@@ -119,7 +119,7 @@ router.post('/UserLogin',async (req,res)=>{
         }
         // generate a jwt token 
         console.log("Password matched")
-        const token = jwt.sign({adminId:user._id},'hostel management service is tokenised ',{expiresIn:'7d'});
+        const token = jwt.sign({adminId:user._id},process.env.TOKEN_SECRET,{expiresIn:'7d'});
 
         // set the token as an cookie 
       res.cookie('token',token,{httpOnly:true,maxage:604800000});

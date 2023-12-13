@@ -1,6 +1,6 @@
 const jwt = require ('jsonwebtoken');
 const user = require('../model/user');
-
+require('dotenv').config();
 const userMiddleware  = async (req,res,next)=>{
     // get toekn from the request header 
     const token = req.header ('Authorization');
@@ -11,7 +11,7 @@ const userMiddleware  = async (req,res,next)=>{
 
     }
     try {
-        const decoded = jwt.verify(token,'hostel management service is tokenised ');
+        const decoded = jwt.verify(token,process.env.TOKEN_SECRET);
         console.log ('Decode token',decoded);
 
         // found the user based on decoded jwt token 

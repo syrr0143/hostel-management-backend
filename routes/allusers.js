@@ -5,7 +5,8 @@ const adminMiddleware = require('../middleware/adminMiddleware');
 const router = express.Router();
 router.get ('/allUsers',adminMiddleware,async (req,res)=>{
 try {
-    const users = await User.find();
+    const admin = req.admin;
+    const users = await User.find({hostelId: admin.hostelId});
 
     // exclude the sensitive details like password as if required 
 
@@ -20,6 +21,7 @@ try {
         EmailAddress:user.EmailAddress ,
         City:user.City ,
         State:user.State ,
+        hostelId:user.hostelId,
         gender:user.gender ,
     }));
 res.status(200).json({users:sanitizedUser});
