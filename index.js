@@ -14,6 +14,7 @@ const noticeRoutes = require('./routes/notice')
 const deleteRoutes = require('./routes/deleteUser')
 const hostelDetailsRoutes = require('./routes/hostelDetails')
 const profileRoutes = require('./routes/profile')
+const SearchRoute = require('./routes/search')
 const paymentRoutes = require('./routes/paymentPage')
 const cors = require("cors");
 const passport = require("passport");
@@ -77,6 +78,7 @@ app.use('/',deleteRoutes);
 app.use('/',profileRoutes);
 app.use('/',paymentRoutes);
 app.use("/", loginwithsocial);
+app.use("/", SearchRoute);
 
 app.get('/', (req,res)=> {
   res.send('Root Page');

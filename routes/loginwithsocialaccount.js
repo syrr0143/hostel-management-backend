@@ -20,11 +20,14 @@ passport.use(
   
 		  if (existingUser) {
 			// If the user exists, update the profile details if needed
-			// You might want to update the user's profile with the latest data from Google
-  
+			existingUser.displayName = profile.displayName;
+			// Update other fields as needed
+			await existingUser.save();
+		
 			// Link the Google account with the existing user account
 			return cb(null, existingUser);
-		  }
+		}
+		
   
 		  // If the user does not exist, create a new user
 		  const newUser = new User({

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const complaintSchema = new mongoose.Schema({
-    studentID: { type: mongoose.Schema.Types.ObjectId, ref: 'Student', required: true },
+    studentID: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     hostelId: { type:String, ref: 'user', required: true },
     dateSubmitted: { type: Date, default: Date.now },
     complaintType: { type: String, required: true },

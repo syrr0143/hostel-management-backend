@@ -38,7 +38,7 @@ router.get('/readComplaints',adminMiddleware,async (req,res)=>{
     try {
         const admin = req.admin;
         // Assuming you want to fetch all complaints for admin review
-        const complaints = await Complaint.find({ hostelId: admin.hostelId });
+        const complaints = await Complaint.find({ hostelId: admin.hostelId }).populate('studentID', 'FullName');
 
         return res.status(200).json({ complaints });
     } catch (error) {
