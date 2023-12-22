@@ -10,7 +10,7 @@ passport.use(
 	  {
 		clientID: process.env.CLIENT_ID,
 		clientSecret: process.env.CLIENT_SECRET,
-		callbackURL: 'http://localhost:4000/auth/google/callback',
+		callbackURL: `${process.env.server}/auth/google/callback`,
 		scope: ['profile', 'email'],
 	  },
 	  async (accessToken, refreshToken, profile, cb) => {
@@ -89,7 +89,7 @@ passport.use(
   
   router.get('/logout', (req, res) => {
 	req.logout();
-	res.redirect(process.env.CLIENT_URL);
+	res.redirect(process.env.server);
   });
   
   module.exports = router;
