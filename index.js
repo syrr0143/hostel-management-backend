@@ -57,11 +57,14 @@ app.use(passport.session());
 
 app.use(
 	cors({
-		origin: "http://localhost:3000",
+		origin: "https://lodges-vista-hostel-managemnt-application.vercel.app",
 		methods: "GET,POST,PUT,DELETE",
 		credentials: true,
+		allowedHeaders: ["Content-Type", "Authorization"],
 	})
 );
+
+  
 
 
 // Middleware
